@@ -28,7 +28,6 @@ vector<int> enterRoute() {
   return route;
 }
 
-// checker.py와 상호작용 test
 int main() {
   py::scoped_interpreter guard{};
 
@@ -46,7 +45,7 @@ int main() {
 
     bool check = checker.attr("check")(route).cast<bool>();
 
-    // python에서 전달받은 check(t/f)로 이후 route 연산 수행
+    // feasibility check
     if (check) {
       cout << "true" << endl;
     } else {
