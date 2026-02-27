@@ -1,0 +1,5 @@
+C:/Users/USER/Desktop/SDO/pybind_prac/build/CMakeFiles/main.dir
+C:/Users/USER/Desktop/SDO/pybind_prac/build/CMakeFiles/main2.dir
+C:/Users/USER/Desktop/SDO/pybind_prac/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/USER/Desktop/SDO/pybind_prac/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/USER/Desktop/SDO/pybind_prac/build/external/pybind11/CMakeFiles/ALL_BUILD.dir
