@@ -31,26 +31,32 @@ vector<int> enterRoute() {
 int main() {
   py::scoped_interpreter guard{};
 
-  py::module_ sys = py::module_::import("sys");
-  sys.attr("path").attr("append")("../python");
-  py::module_ checker = py::module_::import("checker");
+  try {
+    py::module_ sys = py::module_::import("sys");
+    
+    sys.attr("path").attr("append")("../python");
+    sys.attr("path").attr("append")("C:/Users/USER/Desktop/SDO/GOPT_cvrp");
 
-  // route.push_back(1);
-  // route.push_back(2);
-  // route.push_back(3);
-  // // route = {1, 2, 3};
+    py::module_ checker = py::module_::import("py_checker");
 
-  for (int i = 0; i < 5; i++) {
-    vector<int> route = enterRoute();
+    for (int i = 0; i < 5; i++) {
+      vector<int> route = enterRoute();
 
-    bool check = checker.attr("check")(route).cast<bool>();
+      bool check = checker.attr("check")(route).cast<bool>();
 
-    // feasibility check
-    if (check) {
-      cout << "true" << endl;
-    } else {
-      cout << "false" << endl;
+      if (check) {
+        cout << "true" << endl;
+      } else {
+        cout << "false" << endl;
+      }
     }
+  } 
+  // 파이썬 에러를 터미널에 출력
+  catch (py::error_already_set& e) {
+    cerr << "\n[파이썬 에러 발생!]\n" << e.what() << endl;
+  } 
+  catch (const std::exception& e) {
+    cerr << "\n[C++ 에러 발생!]\n" << e.what() << endl;
   }
 
   return 0;
