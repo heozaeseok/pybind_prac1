@@ -33,8 +33,8 @@ int main() {
 
   try {
     py::module_ sys = py::module_::import("sys");
-    
-    sys.attr("path").attr("append")("../python");
+        
+    sys.attr("path").attr("append")("C:/Users/USER/Desktop/SDO/pybind_prac/python");
     sys.attr("path").attr("append")("C:/Users/USER/Desktop/SDO/GOPT_cvrp");
 
     py::module_ checker = py::module_::import("py_checker");
