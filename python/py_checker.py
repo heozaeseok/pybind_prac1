@@ -22,7 +22,7 @@ set_seed(args.seed, args.cuda, args.cuda_deterministic)
 
 # 경로 설정
 cvrp_file = r"C:\Users\USER\Desktop\SDO\GOPT_cvrp\3L_CVRP\3l_cvrp01.txt"
-args.ckp = r"C:\Users\USER\Desktop\SDO\GOPT_cvrp\learned_model\policy_step_best7.pth"
+args.ckp = r"C:\Users\USER\Desktop\SDO\GOPT_cvrp\learned_model\ver2\policy_step_best7.pth"
 
 parser = CVRPParser(cvrp_file)
 veh_info = parser.vehicle_info
@@ -39,7 +39,7 @@ test_env = gym.make(
     action_scheme=args.env.scheme,
     k_placement=args.env.k_placement,
     is_render=False, 
-    cvrp_parser=parser
+    cvrp_parsers=parser
 )
 
 # 생성기를 EvalBoxCreator로 교체
