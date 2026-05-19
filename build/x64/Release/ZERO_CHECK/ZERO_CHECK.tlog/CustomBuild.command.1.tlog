@@ -1,0 +1,10 @@
+^C:\USERS\USER\DESKTOP\SDO\PYBIND_PRAC\BUILD\CMAKEFILES\F85F72A3624F613AD9E68C6F6E1A03A3\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/USER/Desktop/SDO/pybind_prac -BC:/Users/USER/Desktop/SDO/pybind_prac/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/USER/Desktop/SDO/pybind_prac/build/pybind_prac.slnx
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

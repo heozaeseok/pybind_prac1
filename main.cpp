@@ -9,6 +9,13 @@
 using namespace std;
 #define endl "\n";
 
+//conda activate GOPT
+//cd C:\Users\USER\Desktop\SDO\pybind_prac\build
+//cmake --build . --config Release
+//$env:PYTHONHOME = "C:\Users\USER\anaconda3\envs\GOPT"
+//$env:PYTHONPATH = "C:\Users\USER\anaconda3\envs\GOPT\Lib;C:\Users\USER\anaconda3\envs\GOPT\Lib\site-packages"
+//./Release/main.exe
+
 namespace py = pybind11;
 
 vector<int> enterRoute() {
@@ -31,32 +38,24 @@ vector<int> enterRoute() {
 int main() {
   py::scoped_interpreter guard{};
 
-  try {
-    py::module_ sys = py::module_::import("sys");
-        
-    sys.attr("path").attr("append")("C:/Users/USER/Desktop/SDO/pybind_prac/python");
-    sys.attr("path").attr("append")("C:/Users/USER/Desktop/SDO/GOPT_cvrp");
+  py::module_ sys = py::module_::import("sys");
+      
+  sys.attr("path").attr("append")("C:/Users/USER/Desktop/SDO/pybind_prac/python");
+  sys.attr("path").attr("append")("C:/Users/USER/Desktop/SDO/GOPT_cvrp");
+  sys.attr("path").attr("append")("C:/Users/USER/Desktop/SDO/GOPT_cvrp/envs/Packing");
 
-    py::module_ checker = py::module_::import("py_checker");
+  py::module_ checker = py::module_::import("py_checker");
 
-    for (int i = 0; i < 5; i++) {
-      vector<int> route = enterRoute();
+  for (int i = 0; i < 5; i++) {
+    vector<int> route = enterRoute();
 
-      bool check = checker.attr("check")(route).cast<bool>();
+    bool check = checker.attr("check")(route).cast<bool>();
 
-      if (check) {
-        cout << "true" << endl;
-      } else {
-        cout << "false" << endl;
-      }
+    if (check) {
+      cout << "true" << endl;
+    } else {
+      cout << "false" << endl;
     }
-  } 
-  // 파이썬 에러를 터미널에 출력
-  catch (py::error_already_set& e) {
-    cerr << "\n[파이썬 에러 발생!]\n" << e.what() << endl;
-  } 
-  catch (const std::exception& e) {
-    cerr << "\n[C++ 에러 발생!]\n" << e.what() << endl;
   }
 
   return 0;
